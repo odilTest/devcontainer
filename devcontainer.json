@@ -1,0 +1,42 @@
+{
+	"name": "Ansible Workspace",
+	//Context außerhalb des git roots erlaubt einbinden von daten aus anderen Repositories
+	"build": {
+		"dockerfile": "Dockerfile",
+		"context": ".."
+	},
+	// 👇 Features to add to the Dev Container. More info: https://containers.dev/implementors/features.
+	"features": {
+		//Use local socket via "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {}
+		"ghcr.io/devcontainers/features/docker-in-docker:2": {}
+	},
+	// 👇 Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// "forwardPorts": [],
+
+	// 👇 Use 'postCreateCommand' to run commands after the container is created.
+
+	// 👇 Configure tool-specific properties.
+	"customizations": {
+		"vscode": {
+			// Set *default* container specific settings.json values on container create.
+			"settings": {
+				"python.defaultInterpreterPath": "/usr/local/bin/python"
+			},
+			"extensions": [
+				"redhat.ansible", //Ansible extension für syntax highlighting & linting
+				"DavidAnson.vscode-markdownlint", //DavidAnson für markdown linting
+				"lkrms.inifmt", //inifm für inti file formatting
+				"numso.prettier-standard-vscode", //prettier-standard für formatting yaml, json, js, ts, css, html
+				"GitHub.copilot", //GitHub.copilot für AI assisted coding
+				"GitHub.copilot-chat",
+				"GitHub.copilot-labs",
+				"MS-CEINTL.vscode-language-pack-de", //Deutsche Sprachunterstützung
+				"ms-azuretools.vscode-docker", //Docker extension für dockerfiles
+				"EditorConfig.EditorConfig", //EditorConfig für einheitliche Formatierung
+				"streetsidesoftware.code-spell-checker" //Code Spell Checker für Rechtschreibprüfung
+			]
+		}
+	},
+	// 👇 Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+	"remoteUser": "root"
+}
