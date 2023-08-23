@@ -12,7 +12,7 @@ jobs:
   build-and-publish:
     runs-on: ubuntu-latest
 
-    steps:
+  steps:
     - name: Checkout repository
       uses: actions/checkout@v3
       - name: Lowercase Registry
