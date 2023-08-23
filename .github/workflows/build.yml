@@ -24,6 +24,7 @@ jobs:
         docker build -t ${{ steps.registry_case.outputs.lowercase }} .
     - name: Push Docker image to GitHub Container Registry
       if: github.ref == 'refs/heads/main'
-      run: |
-        echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u ${{ steps.registry_case.outputs.lowercase }} --password-stdin
-        docker push ${{ steps.registry_case.outputs.lowercase }}
+      uses: macbre/push-to-ghcr@master
+      with:
+        image_name: ${{ github.repository }}  # it will be lowercased internally
+        github_token: ${{ secrets.GITHUB_TOKEN }}
