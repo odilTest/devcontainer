@@ -1,4 +1,4 @@
-name: prebuild-fedora-devcontainer
+name: prebuild-devcontainer
 on:
   pull_request:
     branches: [ main ]
