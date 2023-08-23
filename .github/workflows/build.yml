@@ -21,12 +21,12 @@ jobs:
         string: ${{ github.repository_owner }}
     - name: Build Docker image
       run: |
-        docker build -t ghcr.io/${{ steps.registry_case.outputs.lowercase }}/${{ github.repository.name }}:latest .
-
-    - name: Push Docker image to GitHub Container Registry
-      if: github.ref == 'refs/heads/main'
-      run: |
-        echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u ${{ steps.registry_case.outputs.lowercase }} --password-stdin
-        docker push ghcr.io/${{ steps.registry_case.outputs.lowercase }}/${{ github.repository.name }}:latest
+        echo ${{ github }}
+    # docker build -t ghcr.io/${{ steps.registry_case.outputs.lowercase }}/${{ github.repository.name }}:latest .
+    # - name: Push Docker image to GitHub Container Registry
+    #   if: github.ref == 'refs/heads/main'
+    #   run: |
+    #     echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u ${{ steps.registry_case.outputs.lowercase }} --password-stdin
+    #     docker push ghcr.io/${{ steps.registry_case.outputs.lowercase }}/${{ github.repository.name }}:latest
 
 
