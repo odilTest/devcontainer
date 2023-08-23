@@ -15,7 +15,7 @@ jobs:
       id: registry_case
       uses: ASzc/change-string-case-action@v5
       with:
-        string: ghcr.io/${{ github.repository.name }}:latest
+        string: ghcr.io/${{ github.repository }}:latest
 
     - name: Build Docker image
       run: |
