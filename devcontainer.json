@@ -27,9 +27,6 @@
 				"DavidAnson.vscode-markdownlint", //DavidAnson für markdown linting
 				"lkrms.inifmt", //inifm für inti file formatting
 				"numso.prettier-standard-vscode", //prettier-standard für formatting yaml, json, js, ts, css, html
-				"GitHub.copilot", //GitHub.copilot für AI assisted coding
-				"GitHub.copilot-chat",
-				"GitHub.copilot-labs",
 				"MS-CEINTL.vscode-language-pack-de", //Deutsche Sprachunterstützung
 				"ms-azuretools.vscode-docker", //Docker extension für dockerfiles
 				"EditorConfig.EditorConfig", //EditorConfig für einheitliche Formatierung
