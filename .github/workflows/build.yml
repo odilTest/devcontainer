@@ -15,13 +15,13 @@ jobs:
       id: registry_case
       uses: ASzc/change-string-case-action@v5
       with:
-        string: ghcr.io/${{ github.repository }}
+        string: ghcr.io/${{ github.repository }}:latest
 
     - name: Build Docker image
       run: |
-        docker build -t ghcr.io/${{ steps.registry_case.outputs.lowercase }}:latest .
-        - name: Push Docker image to GitHub Container Registry
-          if: github.ref == 'refs/heads/main'
-          run: |
-            echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u ${{ steps.registry_case.outputs.lowercase }} --password-stdin
-            docker push ghcr.io/${{ steps.registry_case.outputs.lowercase }}:latest
+        docker build -t ghcr.io/${{ steps.registry_case.outputs.lowercase }} .
+        # - name: Push Docker image to GitHub Container Registry
+        #   if: github.ref == 'refs/heads/main'
+        #   run: |
+        #     echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u ${{ steps.registry_case.outputs.lowercase }} --password-stdin
+        #     docker push ghcr.io/${{ steps.registry_case.outputs.lowercase }}:latest
