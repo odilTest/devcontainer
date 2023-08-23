@@ -1,0 +1,29 @@
+name: Build and Publish Docker Image
+on:
+  pull_request:
+    branches: [ main ]
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Lowercase Registry
+      id: registry_case
+      uses: ASzc/change-string-case-action@v5
+      with:
+        string: ghcr.io/${{ github.repository }}:latest
+
+    - name: Build Docker image
+      run: |
+        docker build -t ghcr.io/${{ steps.registry_case.outputs.lowercase }} .
+    - name: Push Docker image to GitHub Container Registry
+      if: github.ref == 'refs/heads/main'
+      run: |
+        echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u ${{ steps.registry_case.outputs.lowercase }} --password-stdin
+        docker push ghcr.io/${{ steps.registry_case.outputs.lowercase }}
