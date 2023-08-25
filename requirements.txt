@@ -1,5 +1,5 @@
 docker
-python-dateutils
+python-dateutil
 molecule
 molecule-plugins[docker]
 ansible-core
