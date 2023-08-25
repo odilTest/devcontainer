@@ -6,10 +6,10 @@ FROM python:${VARIANT}
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
     # Remove imagemagick due to https://security-tracker.debian.org/tracker/CVE-2019-10131
     && apt-get purge -y imagemagick imagemagick-6-common \
-    && apt-get -y install --no-install-recommends  iputils-ping
+    && apt-get -y install --no-install-recommends  iputils-ping vim
 # Temporary: Upgrade python packages due to https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-40897
 # They are installed by the base image (python) which does not have the patch.
-RUN python3 -m pip install --upgrade setuptools
+RUN python3 -m pip install --upgrade setuptools 
 # [Optional] If your pip requirements rarely change, uncomment this section to add them to the image.
 COPY requirement* /tmp/pip-tmp/
 #run only if requirements.txt is present
